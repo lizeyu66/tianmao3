@@ -68,13 +68,27 @@
 
     })
 }
+//顶部导航效果
 {
     $(window).scroll(function () {
         let st = $(window).scrollTop();
-        if (st > 700) {
+        if (st > 780) {
             $(".fixed_top_nav").show();
         } else {
             $(".fixed_top_nav").hide();
         }
     })
 }
+//回到顶部效果
+$(".totop").click(function(){
+    $("html,body").animate({scrollTop:0})
+})
+//滑动出现导航效果
+$(window).scroll(function(){
+    let st=$(window).scrollTop();
+    if(st>800){
+        $(".fixed_nav_left").show();
+    }else{
+        $(".fixed_nav_left").hide();
+    }
+})
