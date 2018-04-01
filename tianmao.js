@@ -50,22 +50,29 @@
     }
 
 }
+// //头部效果
+// $(".h_a1").each(function(index,ele){
+//     $(this).mouseenter(function(){
+//         $(".icon_down").eq(index).hide();
+//         $(".icon_up").eq(index).show();
+//     })
+//     $(this).mouseleave(function(){
+//         $(".icon_up").eq(index).hide();
+//         $(".icon_down").eq(index).show();
+//     })
+// })
+
 //天猫超市效果
 {
     $(".jrfq_top1").mouseenter(function(){
+        var index=$(this).index();
         $(".jrfq_mid11").hide();
         $(".jrfq_mid").show();
         $(this).addClass("active").siblings(".active").removeClass("active");
-        $(".jrfq_top11").removeClass("active");
     })
-
     $(".jrfq_top11").mouseenter(function(){
-        $(".jrfq_mid").hide();
         $(".jrfq_mid11").show();
-        $(this).addClass("active").siblings(".active").removeClass("active");
-        $(".jrfq_top1").removeClass("active");
-
-
+        $(".jrfq_mid").hide();
     })
 }
 //顶部导航效果
@@ -92,3 +99,38 @@ $(window).scroll(function(){
         $(".fixed_nav_left").hide();
     }
 })
+//左导航效果
+$(".f_n_l1").click(function(){
+    let index=$(this).index(".f_n_l1");
+    let ot=$(".tianmaochaoshi").eq(index).offset().top-1200;
+    $("html,body").animate({scrollTop:ot},200)
+})
+$(window).scroll(function(){
+    let st=$(window).scrollTop();
+    $(".tianmaochaoshi").each(function(index,ele){
+        // console.log(this);
+        if(st>=$(this).offset().top-1200){
+            $(".f_n_l1").removeClass("active").eq(index).addClass("active");
+        }
+    })
+})
+//右导航弹出效果
+$(".f_f_nav1").each(function(index,ele){
+    $(this).mouseenter(function () {
+        $(".f_r_tanchu").eq(index).animate({right: '+35px'}, "500");
+        $(".f_r_tanchu").eq(index).show();
+        $(".f_r_tanchu_sanjiao").eq(index).show();
+        $(".f_r_tanchu_sanjiao").eq(index).animate({right: '+27px'}, "500");
+    })
+    $(this).mouseleave(function(){
+        $(".f_r_tanchu").eq(index).hide();
+        $(".f_r_tanchu_sanjiao").eq(index).hide();
+    })
+})
+$(".f_f_nav11").mouseenter(function(){
+    $(".tan_ewm").show();
+})
+$(".f_f_nav11").mouseleave(function(){
+    $(".tan_ewm").hide();
+})
+
